@@ -619,16 +619,6 @@
         <description>Gimbal device is not assigned to a gimbal manager.</description>
       </entry>
     </enum>
-    <!-- gripper action enum -->
-    <enum name="GRIPPER_ACTIONS">
-      <description>Gripper actions.</description>
-      <entry value="0" name="GRIPPER_ACTION_RELEASE">
-        <description>Gripper release cargo.</description>
-      </entry>
-      <entry value="1" name="GRIPPER_ACTION_GRAB">
-        <description>Gripper grab onto cargo.</description>
-      </entry>
-    </enum>
     <!-- winch action enum -->
     <enum name="WINCH_ACTIONS">
       <description>Winch actions.</description>
@@ -1694,16 +1684,6 @@
         <param index="6">Empty</param>
         <param index="7">Empty</param>
       </entry>
-      <entry value="208" name="MAV_CMD_DO_PARACHUTE" hasLocation="false" isDestination="false">
-        <description>Mission item/command to release a parachute or enable/disable auto release.</description>
-        <param index="1" label="Action" enum="PARACHUTE_ACTION">Action</param>
-        <param index="2">Empty</param>
-        <param index="3">Empty</param>
-        <param index="4">Empty</param>
-        <param index="5">Empty</param>
-        <param index="6">Empty</param>
-        <param index="7">Empty</param>
-      </entry>
       <entry value="209" name="MAV_CMD_DO_MOTOR_TEST" hasLocation="false" isDestination="false">
         <description>Command to perform motor test.</description>
         <param index="1" label="Instance" minValue="1" increment="1">Motor instance number (from 1 to max number of motors on the vehicle).</param>
@@ -1718,16 +1698,6 @@
         <description>Change to/from inverted flight.</description>
         <param index="1" label="Inverted" minValue="0" maxValue="1" increment="1">Inverted flight. (0=normal, 1=inverted)</param>
         <param index="2">Empty</param>
-        <param index="3">Empty</param>
-        <param index="4">Empty</param>
-        <param index="5">Empty</param>
-        <param index="6">Empty</param>
-        <param index="7">Empty</param>
-      </entry>
-      <entry value="211" name="MAV_CMD_DO_GRIPPER" hasLocation="false" isDestination="false">
-        <description>Mission command to operate a gripper.</description>
-        <param index="1" label="Instance" minValue="1" increment="1">Gripper instance number.</param>
-        <param index="2" label="Action" enum="GRIPPER_ACTIONS">Gripper action to perform.</param>
         <param index="3">Empty</param>
         <param index="4">Empty</param>
         <param index="5">Empty</param>
@@ -3606,21 +3576,6 @@
         <description>RTK basestation centered, north, east, down</description>
       </entry>
     </enum>
-    <enum name="LANDING_TARGET_TYPE">
-      <description>Type of landing target</description>
-      <entry value="0" name="LANDING_TARGET_TYPE_LIGHT_BEACON">
-        <description>Landing target signaled by light beacon (ex: IR-LOCK)</description>
-      </entry>
-      <entry value="1" name="LANDING_TARGET_TYPE_RADIO_BEACON">
-        <description>Landing target signaled by radio beacon (ex: ILS, NDB)</description>
-      </entry>
-      <entry value="2" name="LANDING_TARGET_TYPE_VISION_FIDUCIAL">
-        <description>Landing target represented by a fiducial marker (ex: ARTag)</description>
-      </entry>
-      <entry value="3" name="LANDING_TARGET_TYPE_VISION_OTHER">
-        <description>Landing target represented by a pre-defined visual shape/feature (ex: X-marker, H-marker, square)</description>
-      </entry>
-    </enum>
     <enum name="VTOL_TRANSITION_HEADING">
       <description>Direction of VTOL transition</description>
       <entry value="0" name="VTOL_TRANSITION_HEADING_VEHICLE_DEFAULT">
@@ -4020,19 +3975,6 @@
       </entry>
       <entry value="2" name="PRECISION_LAND_MODE_REQUIRED">
         <description>Use precision landing, searching for beacon if not found when land command accepted (land normally if beacon cannot be found).</description>
-      </entry>
-    </enum>
-    <!-- parachute action enum -->
-    <enum name="PARACHUTE_ACTION">
-      <description>Parachute actions. Trigger release and enable/disable auto-release.</description>
-      <entry value="0" name="PARACHUTE_DISABLE">
-        <description>Disable auto-release of parachute (i.e. release triggered by crash detectors).</description>
-      </entry>
-      <entry value="1" name="PARACHUTE_ENABLE">
-        <description>Enable auto-release of parachute.</description>
-      </entry>
-      <entry value="2" name="PARACHUTE_RELEASE">
-        <description>Release parachute and kill motors.</description>
       </entry>
     </enum>
     <enum name="MAV_TUNNEL_PAYLOAD_TYPE">
@@ -4638,51 +4580,6 @@
       </entry>
       <entry value="2" name="NAV_VTOL_LAND_OPTIONS_HOVER_DESCENT">
         <description>Land in multicopter mode on reaching the landing coordinates (the whole landing is by "hover descent").</description>
-      </entry>
-    </enum>
-    <enum name="MAV_WINCH_STATUS_FLAG" bitmask="true">
-      <description>Winch status flags used in WINCH_STATUS</description>
-      <entry value="1" name="MAV_WINCH_STATUS_HEALTHY">
-        <description>Winch is healthy</description>
-      </entry>
-      <entry value="2" name="MAV_WINCH_STATUS_FULLY_RETRACTED">
-        <description>Winch line is fully retracted</description>
-      </entry>
-      <entry value="4" name="MAV_WINCH_STATUS_MOVING">
-        <description>Winch motor is moving</description>
-      </entry>
-      <entry value="8" name="MAV_WINCH_STATUS_CLUTCH_ENGAGED">
-        <description>Winch clutch is engaged allowing motor to move freely.</description>
-      </entry>
-      <entry value="16" name="MAV_WINCH_STATUS_LOCKED">
-        <description>Winch is locked by locking mechanism.</description>
-      </entry>
-      <entry value="32" name="MAV_WINCH_STATUS_DROPPING">
-        <description>Winch is gravity dropping payload.</description>
-      </entry>
-      <entry value="64" name="MAV_WINCH_STATUS_ARRESTING">
-        <description>Winch is arresting payload descent.</description>
-      </entry>
-      <entry value="128" name="MAV_WINCH_STATUS_GROUND_SENSE">
-        <description>Winch is using torque measurements to sense the ground.</description>
-      </entry>
-      <entry value="256" name="MAV_WINCH_STATUS_RETRACTING">
-        <description>Winch is returning to the fully retracted position.</description>
-      </entry>
-      <entry value="512" name="MAV_WINCH_STATUS_REDELIVER">
-        <description>Winch is redelivering the payload. This is a failover state if the line tension goes above a threshold during RETRACTING.</description>
-      </entry>
-      <entry value="1024" name="MAV_WINCH_STATUS_ABANDON_LINE">
-        <description>Winch is abandoning the line and possibly payload. Winch unspools the entire calculated line length. This is a failover state from REDELIVER if the number of attempts exceeds a threshold.</description>
-      </entry>
-      <entry value="2048" name="MAV_WINCH_STATUS_LOCKING">
-        <description>Winch is engaging the locking mechanism.</description>
-      </entry>
-      <entry value="4096" name="MAV_WINCH_STATUS_LOAD_LINE">
-        <description>Winch is spooling on line.</description>
-      </entry>
-      <entry value="8192" name="MAV_WINCH_STATUS_LOAD_PAYLOAD">
-        <description>Winch is loading a payload.</description>
       </entry>
     </enum>
     <enum name="MAG_CAL_STATUS">
@@ -5768,54 +5665,6 @@
       <field type="float" name="flow_rate_x" units="rad/s">Flow rate about X axis</field>
       <field type="float" name="flow_rate_y" units="rad/s">Flow rate about Y axis</field>
     </message>
-    <message id="101" name="GLOBAL_VISION_POSITION_ESTIMATE">
-      <description>Global position/attitude estimate from a vision source.</description>
-      <field type="uint64_t" name="usec" units="us">Timestamp (UNIX time or since system boot)</field>
-      <field type="float" name="x" units="m">Global X position</field>
-      <field type="float" name="y" units="m">Global Y position</field>
-      <field type="float" name="z" units="m">Global Z position</field>
-      <field type="float" name="roll" units="rad">Roll angle</field>
-      <field type="float" name="pitch" units="rad">Pitch angle</field>
-      <field type="float" name="yaw" units="rad">Yaw angle</field>
-      <extensions/>
-      <field type="float[21]" name="covariance" invalid="[NaN:]">Row-major representation of pose 6x6 cross-covariance matrix upper right triangle (states: x_global, y_global, z_global, roll, pitch, yaw; first six entries are the first ROW, next five entries are the second ROW, etc.). If unknown, assign NaN value to first element in the array.</field>
-      <field type="uint8_t" name="reset_counter">Estimate reset counter. This should be incremented when the estimate resets in any of the dimensions (position, velocity, attitude, angular speed). This is designed to be used when e.g an external SLAM system detects a loop-closure and the estimate jumps.</field>
-    </message>
-    <message id="102" name="VISION_POSITION_ESTIMATE">
-      <description>Local position/attitude estimate from a vision source.</description>
-      <field type="uint64_t" name="usec" units="us">Timestamp (UNIX time or time since system boot)</field>
-      <field type="float" name="x" units="m">Local X position</field>
-      <field type="float" name="y" units="m">Local Y position</field>
-      <field type="float" name="z" units="m">Local Z position</field>
-      <field type="float" name="roll" units="rad">Roll angle</field>
-      <field type="float" name="pitch" units="rad">Pitch angle</field>
-      <field type="float" name="yaw" units="rad">Yaw angle</field>
-      <extensions/>
-      <field type="float[21]" name="covariance" invalid="[NaN:]">Row-major representation of pose 6x6 cross-covariance matrix upper right triangle (states: x, y, z, roll, pitch, yaw; first six entries are the first ROW, next five entries are the second ROW, etc.). If unknown, assign NaN value to first element in the array.</field>
-      <field type="uint8_t" name="reset_counter">Estimate reset counter. This should be incremented when the estimate resets in any of the dimensions (position, velocity, attitude, angular speed). This is designed to be used when e.g an external SLAM system detects a loop-closure and the estimate jumps.</field>
-    </message>
-    <message id="103" name="VISION_SPEED_ESTIMATE">
-      <description>Speed estimate from a vision source.</description>
-      <field type="uint64_t" name="usec" units="us">Timestamp (UNIX time or time since system boot)</field>
-      <field type="float" name="x" units="m/s">Global X speed</field>
-      <field type="float" name="y" units="m/s">Global Y speed</field>
-      <field type="float" name="z" units="m/s">Global Z speed</field>
-      <extensions/>
-      <field type="float[9]" name="covariance" invalid="[NaN:]">Row-major representation of 3x3 linear velocity covariance matrix (states: vx, vy, vz; 1st three entries - 1st row, etc.). If unknown, assign NaN value to first element in the array.</field>
-      <field type="uint8_t" name="reset_counter">Estimate reset counter. This should be incremented when the estimate resets in any of the dimensions (position, velocity, attitude, angular speed). This is designed to be used when e.g an external SLAM system detects a loop-closure and the estimate jumps.</field>
-    </message>
-    <message id="104" name="VICON_POSITION_ESTIMATE">
-      <description>Global position estimate from a Vicon motion system source.</description>
-      <field type="uint64_t" name="usec" units="us">Timestamp (UNIX time or time since system boot)</field>
-      <field type="float" name="x" units="m">Global X position</field>
-      <field type="float" name="y" units="m">Global Y position</field>
-      <field type="float" name="z" units="m">Global Z position</field>
-      <field type="float" name="roll" units="rad">Roll angle</field>
-      <field type="float" name="pitch" units="rad">Pitch angle</field>
-      <field type="float" name="yaw" units="rad">Yaw angle</field>
-      <extensions/>
-      <field type="float[21]" name="covariance" invalid="[NaN:]">Row-major representation of 6x6 pose cross-covariance matrix upper right triangle (states: x, y, z, roll, pitch, yaw; first six entries are the first ROW, next five entries are the second ROW, etc.). If unknown, assign NaN value to first element in the array.</field>
-    </message>
     <message id="105" name="HIGHRES_IMU">
       <description>The IMU readings in SI units in NED body frame</description>
       <field type="uint64_t" name="time_usec" units="us">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</field>
@@ -6211,16 +6060,6 @@
       <extensions/>
       <field type="int16_t" name="temperature_press_diff" units="cdegC" invalid="0">Differential pressure temperature (0, if not available). Report values of 0 (or 1) as 1 cdegC.</field>
     </message>
-    <message id="138" name="ATT_POS_MOCAP">
-      <description>Motion capture attitude and position</description>
-      <field type="uint64_t" name="time_usec" units="us">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</field>
-      <field type="float[4]" name="q">Attitude quaternion (w, x, y, z order, zero-rotation is 1, 0, 0, 0)</field>
-      <field type="float" name="x" units="m">X position (NED)</field>
-      <field type="float" name="y" units="m">Y position (NED)</field>
-      <field type="float" name="z" units="m">Z position (NED)</field>
-      <extensions/>
-      <field type="float[21]" name="covariance" invalid="[NaN:]">Row-major representation of a pose 6x6 cross-covariance matrix upper right triangle (states: x, y, z, roll, pitch, yaw; first six entries are the first ROW, next five entries are the second ROW, etc.). If unknown, assign NaN value to first element in the array.</field>
-    </message>
     <message id="139" name="SET_ACTUATOR_CONTROL_TARGET">
       <description>Set the vehicle attitude and body angular rates.</description>
       <field type="uint64_t" name="time_usec" units="us">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</field>
@@ -6329,24 +6168,6 @@
       <field type="uint64_t" name="uid">UID if provided by hardware (see uid2)</field>
       <extensions/>
       <field type="uint8_t[18]" name="uid2">UID if provided by hardware (supersedes the uid field. If this is non-zero, use this field, otherwise use uid)</field>
-    </message>
-    <message id="149" name="LANDING_TARGET">
-      <description>The location of a landing target. See: https://mavlink.io/en/services/landing_target.html</description>
-      <field type="uint64_t" name="time_usec" units="us">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</field>
-      <field type="uint8_t" name="target_num">The ID of the target if multiple targets are present</field>
-      <field type="uint8_t" name="frame" enum="MAV_FRAME">Coordinate frame used for following fields.</field>
-      <field type="float" name="angle_x" units="rad">X-axis angular offset of the target from the center of the image</field>
-      <field type="float" name="angle_y" units="rad">Y-axis angular offset of the target from the center of the image</field>
-      <field type="float" name="distance" units="m">Distance to the target from the vehicle</field>
-      <field type="float" name="size_x" units="rad">Size of target along x-axis</field>
-      <field type="float" name="size_y" units="rad">Size of target along y-axis</field>
-      <extensions/>
-      <field type="float" name="x" units="m">X Position of the landing target in MAV_FRAME</field>
-      <field type="float" name="y" units="m">Y Position of the landing target in MAV_FRAME</field>
-      <field type="float" name="z" units="m">Z Position of the landing target in MAV_FRAME</field>
-      <field type="float[4]" name="q">Quaternion of landing target orientation (w, x, y, z order, zero-rotation is 1, 0, 0, 0)</field>
-      <field type="uint8_t" name="type" enum="LANDING_TARGET_TYPE">Type of landing target</field>
-      <field type="uint8_t" name="position_valid" invalid="0">Boolean indicating whether the position fields (x, y, z, q, type) contain valid target position information (valid: 1, invalid: 0). Default is 0 (invalid).</field>
     </message>
     <!-- imported from ardupilotmega.xml (2019) -->
     <message id="162" name="FENCE_STATUS">
@@ -7137,28 +6958,6 @@
       <field type="float" name="angle_offset" units="deg">Relative angle offset of the 0-index element in the distances array. Value of 0 corresponds to forward. Positive is clockwise direction, negative is counter-clockwise.</field>
       <field type="uint8_t" name="frame" enum="MAV_FRAME">Coordinate frame of reference for the yaw rotation and offset of the sensor data. Defaults to MAV_FRAME_GLOBAL, which is north aligned. For body-mounted sensors use MAV_FRAME_BODY_FRD, which is vehicle front aligned.</field>
     </message>
-    <message id="331" name="ODOMETRY">
-      <description>Odometry message to communicate odometry information with an external interface. Fits ROS REP 147 standard for aerial vehicles (http://www.ros.org/reps/rep-0147.html).</description>
-      <field type="uint64_t" name="time_usec" units="us">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</field>
-      <field type="uint8_t" name="frame_id" enum="MAV_FRAME">Coordinate frame of reference for the pose data.</field>
-      <field type="uint8_t" name="child_frame_id" enum="MAV_FRAME">Coordinate frame of reference for the velocity in free space (twist) data.</field>
-      <field type="float" name="x" units="m">X Position</field>
-      <field type="float" name="y" units="m">Y Position</field>
-      <field type="float" name="z" units="m">Z Position</field>
-      <field type="float[4]" name="q">Quaternion components, w, x, y, z (1 0 0 0 is the null-rotation)</field>
-      <field type="float" name="vx" units="m/s">X linear speed</field>
-      <field type="float" name="vy" units="m/s">Y linear speed</field>
-      <field type="float" name="vz" units="m/s">Z linear speed</field>
-      <field type="float" name="rollspeed" units="rad/s">Roll angular speed</field>
-      <field type="float" name="pitchspeed" units="rad/s">Pitch angular speed</field>
-      <field type="float" name="yawspeed" units="rad/s">Yaw angular speed</field>
-      <field type="float[21]" name="pose_covariance" invalid="[NaN:]">Row-major representation of a 6x6 pose cross-covariance matrix upper right triangle (states: x, y, z, roll, pitch, yaw; first six entries are the first ROW, next five entries are the second ROW, etc.). If unknown, assign NaN value to first element in the array.</field>
-      <field type="float[21]" name="velocity_covariance" invalid="[NaN:]">Row-major representation of a 6x6 velocity cross-covariance matrix upper right triangle (states: vx, vy, vz, rollspeed, pitchspeed, yawspeed; first six entries are the first ROW, next five entries are the second ROW, etc.). If unknown, assign NaN value to first element in the array.</field>
-      <extensions/>
-      <field type="uint8_t" name="reset_counter">Estimate reset counter. This should be incremented when the estimate resets in any of the dimensions (position, velocity, attitude, angular speed). This is designed to be used when e.g an external SLAM system detects a loop-closure and the estimate jumps.</field>
-      <field type="uint8_t" name="estimator_type" enum="MAV_ESTIMATOR_TYPE">Type of estimator that is providing the odometry.</field>
-      <field type="int8_t" name="quality" units="%" invalid="0">Optional odometry quality metric as a percentage. -1 = odometry has failed, 0 = unknown/unset quality, 1 = worst quality, 100 = best quality</field>
-    </message>
     <message id="332" name="TRAJECTORY_REPRESENTATION_WAYPOINTS">
       <description>Describe a trajectory using an array of up-to 5 waypoints in the local frame (MAV_FRAME_LOCAL_NED).</description>
       <field type="uint64_t" name="time_usec" units="us">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</field>
@@ -7466,17 +7265,6 @@
       <field type="uint64_t" name="time_usec" units="us">Timestamp (synced to UNIX time or since system boot).</field>
       <field type="uint8_t" name="count">Number of wheels reported.</field>
       <field type="double[16]" name="distance" units="m">Distance reported by individual wheel encoders. Forward rotations increase values, reverse rotations decrease them. Not all wheels will necessarily have wheel encoders; the mapping of encoders to wheel positions must be agreed/understood by the endpoints.</field>
-    </message>
-    <message id="9005" name="WINCH_STATUS">
-      <description>Winch status.</description>
-      <field type="uint64_t" name="time_usec" units="us">Timestamp (synced to UNIX time or since system boot).</field>
-      <field type="float" name="line_length" units="m" invalid="NaN">Length of line released. NaN if unknown</field>
-      <field type="float" name="speed" units="m/s" invalid="NaN">Speed line is being released or retracted. Positive values if being released, negative values if being retracted, NaN if unknown</field>
-      <field type="float" name="tension" units="kg" invalid="NaN">Tension on the line. NaN if unknown</field>
-      <field type="float" name="voltage" units="V" invalid="NaN">Voltage of the battery supplying the winch. NaN if unknown</field>
-      <field type="float" name="current" units="A" invalid="NaN">Current draw from the winch. NaN if unknown</field>
-      <field type="int16_t" name="temperature" units="degC" invalid="INT16_MAX">Temperature of the motor. INT16_MAX if unknown</field>
-      <field type="uint32_t" name="status" display="bitmask" enum="MAV_WINCH_STATUS_FLAG">Status flags</field>
     </message>
     <message id="12900" name="OPEN_DRONE_ID_BASIC_ID">
       <description>Data for filling the OpenDroneID Basic ID message. This and the below messages are primarily meant for feeding data to/from an OpenDroneID implementation. E.g. https://github.com/opendroneid/opendroneid-core-c. These messages are compatible with the ASTM F3411 Remote ID standard and the ASD-STAN prEN 4709-002 Direct Remote ID standard. Additional information and usage of these messages is documented at https://mavlink.io/en/services/opendroneid.html.</description>

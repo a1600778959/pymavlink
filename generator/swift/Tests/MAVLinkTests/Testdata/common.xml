@@ -1111,16 +1111,6 @@
         <param index="6">Empty</param>
         <param index="7">Empty</param>
       </entry>
-      <entry name="MAV_CMD_DO_PARACHUTE" value="208">
-        <description>Mission command to trigger a parachute</description>
-        <param index="1">action (0=disable, 1=enable, 2=release, for some systems see PARACHUTE_ACTION enum, not in general message set.)</param>
-        <param index="2">Empty</param>
-        <param index="3">Empty</param>
-        <param index="4">Empty</param>
-        <param index="5">Empty</param>
-        <param index="6">Empty</param>
-        <param index="7">Empty</param>
-      </entry>
       <entry name="MAV_CMD_DO_MOTOR_TEST" value="209">
         <description>Mission command to perform motor test</description>
         <param index="1">motor sequence number (a number from 1 to max number of motors on the vehicle)</param>
@@ -2982,39 +2972,6 @@
       <field type="uint8_t" name="quality">Optical flow quality / confidence. 0: bad, 255: maximum quality</field>
       <field type="float" name="ground_distance">Ground distance in meters. Positive value: distance known. Negative value: Unknown distance</field>
     </message>
-    <message id="101" name="GLOBAL_VISION_POSITION_ESTIMATE">
-      <field type="uint64_t" name="usec">Timestamp (microseconds, synced to UNIX time or since system boot)</field>
-      <field type="float" name="x">Global X position</field>
-      <field type="float" name="y">Global Y position</field>
-      <field type="float" name="z">Global Z position</field>
-      <field type="float" name="roll">Roll angle in rad</field>
-      <field type="float" name="pitch">Pitch angle in rad</field>
-      <field type="float" name="yaw">Yaw angle in rad</field>
-    </message>
-    <message id="102" name="VISION_POSITION_ESTIMATE">
-      <field type="uint64_t" name="usec">Timestamp (microseconds, synced to UNIX time or since system boot)</field>
-      <field type="float" name="x">Global X position</field>
-      <field type="float" name="y">Global Y position</field>
-      <field type="float" name="z">Global Z position</field>
-      <field type="float" name="roll">Roll angle in rad</field>
-      <field type="float" name="pitch">Pitch angle in rad</field>
-      <field type="float" name="yaw">Yaw angle in rad</field>
-    </message>
-    <message id="103" name="VISION_SPEED_ESTIMATE">
-      <field type="uint64_t" name="usec">Timestamp (microseconds, synced to UNIX time or since system boot)</field>
-      <field type="float" name="x">Global X speed</field>
-      <field type="float" name="y">Global Y speed</field>
-      <field type="float" name="z">Global Z speed</field>
-    </message>
-    <message id="104" name="VICON_POSITION_ESTIMATE">
-      <field type="uint64_t" name="usec">Timestamp (microseconds, synced to UNIX time or since system boot)</field>
-      <field type="float" name="x">Global X position</field>
-      <field type="float" name="y">Global Y position</field>
-      <field type="float" name="z">Global Z position</field>
-      <field type="float" name="roll">Roll angle in rad</field>
-      <field type="float" name="pitch">Pitch angle in rad</field>
-      <field type="float" name="yaw">Yaw angle in rad</field>
-    </message>
     <message id="105" name="HIGHRES_IMU">
       <description>The IMU readings in SI units in NED body frame</description>
       <field type="uint64_t" name="time_usec">Timestamp (microseconds, synced to UNIX time or since system boot)</field>
@@ -3363,14 +3320,6 @@
       <field type="float" name="press_diff">Differential pressure 1 (hectopascal)</field>
       <field type="int16_t" name="temperature">Temperature measurement (0.01 degrees celsius)</field>
     </message>
-    <message id="138" name="ATT_POS_MOCAP">
-      <description>Motion capture attitude and position</description>
-      <field type="uint64_t" name="time_usec">Timestamp (micros since boot or Unix epoch)</field>
-      <field type="float[4]" name="q">Attitude quaternion (w, x, y, z order, zero-rotation is 1, 0, 0, 0)</field>
-      <field type="float" name="x">X position in meters (NED)</field>
-      <field type="float" name="y">Y position in meters (NED)</field>
-      <field type="float" name="z">Z position in meters (NED)</field>
-    </message>
     <message id="139" name="SET_ACTUATOR_CONTROL_TARGET">
       <description>Set the vehicle attitude and body angular rates.</description>
       <field type="uint64_t" name="time_usec">Timestamp (micros since boot or Unix epoch)</field>
@@ -3469,17 +3418,6 @@
       <field type="uint16_t" name="vendor_id">ID of the board vendor</field>
       <field type="uint16_t" name="product_id">ID of the product</field>
       <field type="uint64_t" name="uid">UID if provided by hardware</field>
-    </message>
-    <message id="149" name="LANDING_TARGET">
-      <description>The location of a landing area captured from a downward facing camera</description>
-      <field type="uint64_t" name="time_usec">Timestamp (micros since boot or Unix epoch)</field>
-      <field type="uint8_t" name="target_num">The ID of the target if multiple targets are present</field>
-      <field type="uint8_t" name="frame">MAV_FRAME enum specifying the whether the following feilds are earth-frame, body-frame, etc.</field>
-      <field type="float" name="angle_x">X-axis angular offset (in radians) of the target from the center of the image</field>
-      <field type="float" name="angle_y">Y-axis angular offset (in radians) of the target from the center of the image</field>
-      <field type="float" name="distance">Distance to the target from the vehicle in meters</field>
-      <field type="float" name="size_x">Size in radians of target along x-axis</field>
-      <field type="float" name="size_y">Size in radians of target along y-axis</field>
     </message>
     <!-- MESSAGE IDs 180 - 229: Space for custom messages in individual projectname_messages.xml files -->
     <message id="230" name="ESTIMATOR_STATUS">

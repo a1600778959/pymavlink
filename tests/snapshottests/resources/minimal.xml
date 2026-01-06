@@ -188,9 +188,6 @@
       <entry value="38" name="MAV_TYPE_LOG">
         <description>Log</description>
       </entry>
-      <entry value="39" name="MAV_TYPE_OSD">
-        <description>OSD</description>
-      </entry>
       <entry value="40" name="MAV_TYPE_IMU">
         <description>IMU</description>
       </entry>
@@ -588,9 +585,6 @@
       </entry>
       <entry value="156" name="MAV_COMP_ID_ADSB">
         <description>Automatic Dependent Surveillance-Broadcast (ADS-B) component.</description>
-      </entry>
-      <entry value="157" name="MAV_COMP_ID_OSD">
-        <description>On Screen Display (OSD) devices for video links.</description>
       </entry>
       <entry value="158" name="MAV_COMP_ID_PERIPHERAL">
         <description>Generic autopilot peripheral component ID. Meant for devices that do not implement the parameter microservice.</description>

@@ -1640,30 +1640,6 @@
         <param index="6" label="Command Identity">Command Identity</param>
         <param index="7" label="Shot ID">Test shot identifier. If set to 1, image will only be captured, but not counted towards internal frame count.</param>
       </entry>
-      <!-- Camera Mount Mission Commands Enumeration -->
-      <entry value="204" name="MAV_CMD_DO_MOUNT_CONFIGURE" hasLocation="false" isDestination="false">
-        <deprecated since="2020-01" replaced_by="MAV_CMD_DO_GIMBAL_MANAGER_CONFIGURE">This message has been superseded by MAV_CMD_DO_GIMBAL_MANAGER_CONFIGURE. The message can still be used to communicate with legacy gimbals implementing it.</deprecated>
-        <description>Mission command to configure a camera or antenna mount</description>
-        <param index="1" label="Mode" enum="MAV_MOUNT_MODE">Mount operation mode</param>
-        <param index="2" label="Stabilize Roll" minValue="0" maxValue="1" increment="1">stabilize roll? (1 = yes, 0 = no)</param>
-        <param index="3" label="Stabilize Pitch" minValue="0" maxValue="1" increment="1">stabilize pitch? (1 = yes, 0 = no)</param>
-        <param index="4" label="Stabilize Yaw" minValue="0" maxValue="1" increment="1">stabilize yaw? (1 = yes, 0 = no)</param>
-        <param index="5" label="Roll Input Mode">roll input (0 = angle body frame, 1 = angular rate, 2 = angle absolute frame)</param>
-        <param index="6" label="Pitch Input Mode">pitch input (0 = angle body frame, 1 = angular rate, 2 = angle absolute frame)</param>
-        <param index="7" label="Yaw Input Mode">yaw input (0 = angle body frame, 1 = angular rate, 2 = angle absolute frame)</param>
-      </entry>
-      <!-- this one is messed up! altitude should be param 7, not param4 -->
-      <entry value="205" name="MAV_CMD_DO_MOUNT_CONTROL" hasLocation="false" isDestination="false">
-        <deprecated since="2020-01" replaced_by="MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW">This message is ambiguous and inconsistent. It has been superseded by MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW and MAV_CMD_DO_SET_ROI_*. The message can still be used to communicate with legacy gimbals implementing it.</deprecated>
-        <description>Mission command to control a camera or antenna mount</description>
-        <param index="1" label="Pitch">pitch depending on mount mode (degrees or degrees/second depending on pitch input).</param>
-        <param index="2" label="Roll">roll depending on mount mode (degrees or degrees/second depending on roll input).</param>
-        <param index="3" label="Yaw">yaw depending on mount mode (degrees or degrees/second depending on yaw input).</param>
-        <param index="4" label="Altitude" units="m">altitude depending on mount mode.</param>
-        <param index="5" label="Latitude">latitude, set if appropriate mount mode.</param>
-        <param index="6" label="Longitude">longitude, set if appropriate mount mode.</param>
-        <param index="7" label="Mode" enum="MAV_MOUNT_MODE">Mount mode.</param>
-      </entry>
       <entry value="206" name="MAV_CMD_DO_SET_CAM_TRIGG_DIST" hasLocation="false" isDestination="false">
         <description>Mission command to set camera trigger distance for this flight. The camera is triggered each time this distance is exceeded. This command can also be used to set the shutter integration time for the camera.</description>
         <param index="1" label="Distance" units="m" minValue="0">Camera trigger distance. 0 to stop triggering.</param>
@@ -2067,24 +2043,6 @@
         <description>Jump to the matching tag in the mission list. Repeat this action for the specified number of times. A mission should contain a single matching tag for each jump. If this is not the case then a jump to a missing tag should complete the mission, and a jump where there are multiple matching tags should always select the one with the lowest mission sequence number.</description>
         <param index="1" label="Tag" minValue="0" increment="1">Target tag to jump to.</param>
         <param index="2" label="Repeat" minValue="0" increment="1">Repeat count.</param>
-      </entry>
-      <!-- entry value 900 reserved for MAV_CMD_PARAM_TRANSACTION (development.xml) -->
-      <entry value="1000" name="MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW" hasLocation="false" isDestination="false">
-        <description>Set gimbal manager pitch/yaw setpoints (low rate command). It is possible to set combinations of the values below. E.g. an angle as well as a desired angular rate can be used to get to this angle at a certain angular rate, or an angular rate only will result in continuous turning. NaN is to be used to signal unset. Note: only the gimbal manager will react to this command - it will be ignored by a gimbal device. Use GIMBAL_MANAGER_SET_PITCHYAW if you need to stream pitch/yaw setpoints at higher rate. </description>
-        <param index="1" label="Pitch angle" units="deg" minValue="-180" maxValue="180">Pitch angle (positive to pitch up, relative to vehicle for FOLLOW mode, relative to world horizon for LOCK mode).</param>
-        <param index="2" label="Yaw angle" units="deg" minValue="-180" maxValue="180">Yaw angle (positive to yaw to the right, relative to vehicle for FOLLOW mode, absolute to North for LOCK mode).</param>
-        <param index="3" label="Pitch rate" units="deg/s">Pitch rate (positive to pitch up).</param>
-        <param index="4" label="Yaw rate" units="deg/s">Yaw rate (positive to yaw to the right).</param>
-        <param index="5" label="Gimbal manager flags" enum="GIMBAL_MANAGER_FLAGS">Gimbal manager flags to use.</param>
-        <param index="7" label="Gimbal device ID">Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. Send command multiple times for more than one gimbal (but not all gimbals).</param>
-      </entry>
-      <entry value="1001" name="MAV_CMD_DO_GIMBAL_MANAGER_CONFIGURE" hasLocation="false" isDestination="false">
-        <description>Gimbal configuration to set which sysid/compid is in primary and secondary control.</description>
-        <param index="1" label="sysid primary control">Sysid for primary control (0: no one in control, -1: leave unchanged, -2: set itself in control (for missions where the own sysid is still unknown), -3: remove control if currently in control).</param>
-        <param index="2" label="compid primary control">Compid for primary control (0: no one in control, -1: leave unchanged, -2: set itself in control (for missions where the own sysid is still unknown), -3: remove control if currently in control).</param>
-        <param index="3" label="sysid secondary control">Sysid for secondary control (0: no one in control, -1: leave unchanged, -2: set itself in control (for missions where the own sysid is still unknown), -3: remove control if currently in control).</param>
-        <param index="4" label="compid secondary control">Compid for secondary control (0: no one in control, -1: leave unchanged, -2: set itself in control (for missions where the own sysid is still unknown), -3: remove control if currently in control).</param>
-        <param index="7" label="Gimbal device ID">Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. Send command multiple times for more than one gimbal (but not all gimbals).</param>
       </entry>
       <entry value="2000" name="MAV_CMD_IMAGE_START_CAPTURE" hasLocation="false" isDestination="false">
         <description>Start image capture sequence. Sends CAMERA_IMAGE_CAPTURED after each capture. Use NaN for reserved values.</description>
@@ -6652,19 +6610,6 @@
       <field type="uint32_t" name="bitrate" units="bits/s">Bit rate</field>
       <field type="uint16_t" name="rotation" units="deg">Video image rotation clockwise</field>
       <field type="uint16_t" name="hfov" units="deg">Horizontal Field of view</field>
-    </message>
-    <message id="271" name="CAMERA_FOV_STATUS">
-      <description>Information about the field of view of a camera. Can be requested with a MAV_CMD_REQUEST_MESSAGE command.</description>
-      <field type="uint32_t" name="time_boot_ms" units="ms">Timestamp (time since system boot).</field>
-      <field type="int32_t" name="lat_camera" units="degE7" invalid="INT32_MAX">Latitude of camera (INT32_MAX if unknown).</field>
-      <field type="int32_t" name="lon_camera" units="degE7" invalid="INT32_MAX">Longitude of camera (INT32_MAX if unknown).</field>
-      <field type="int32_t" name="alt_camera" units="mm" invalid="INT32_MAX">Altitude (MSL) of camera (INT32_MAX if unknown).</field>
-      <field type="int32_t" name="lat_image" units="degE7" invalid="INT32_MAX">Latitude of center of image (INT32_MAX if unknown, INT32_MIN if at infinity, not intersecting with horizon).</field>
-      <field type="int32_t" name="lon_image" units="degE7" invalid="INT32_MAX">Longitude of center of image (INT32_MAX if unknown, INT32_MIN if at infinity, not intersecting with horizon).</field>
-      <field type="int32_t" name="alt_image" units="mm" invalid="INT32_MAX">Altitude (MSL) of center of image (INT32_MAX if unknown, INT32_MIN if at infinity, not intersecting with horizon).</field>
-      <field type="float[4]" name="q">Quaternion of camera orientation (w, x, y, z order, zero-rotation is 1, 0, 0, 0)</field>
-      <field type="float" name="hfov" units="deg" invalid="NaN">Horizontal field of view (NaN if unknown).</field>
-      <field type="float" name="vfov" units="deg" invalid="NaN">Vertical field of view (NaN if unknown).</field>
     </message>
     <message id="275" name="CAMERA_TRACKING_IMAGE_STATUS">
       <description>Camera tracking status, sent while in active tracking. Use MAV_CMD_SET_MESSAGE_INTERVAL to define message interval.</description>

@@ -2056,7 +2056,6 @@ mode_mapping_rover = {
     0 : 'MANUAL',
     1 : 'ACRO',
     2 : 'LEARNING',
-    3 : 'STEERING',
     4 : 'HOLD',
     5 : 'LOITER',
     6 : 'FOLLOW',
@@ -2067,7 +2066,8 @@ mode_mapping_rover = {
     11 : 'RTL',
     12 : 'SMART_RTL',
     15 : 'GUIDED',
-    16 : 'INITIALISING'
+    16 : 'INITIALISING',
+    16 : 'AOAFOLLOW'
 }
 
 mode_mapping_tracker = {

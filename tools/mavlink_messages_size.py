@@ -73,9 +73,7 @@ mavlink_message_lengths_dict = OrderedDict([
 (                          'LANDING_TARGET' ,  38), # ID#149 The location of a landing area captured from a downward facing camera
 (                          'SENSOR_OFFSETS' ,  50), # ID#150 Offsets and calibrations values for hardware sensors. This makes it easier to debug the calibration process.
 (                                 'MEMINFO' ,  12), # ID#152 state of APM memory
-(                                  'AP_ADC' ,  20), # ID#153 raw ADC output
 (                         'DIGICAM_CONTROL' ,  21), # ID#155 Control on-board Camera Control System to take shots.
-(                            'MOUNT_STATUS' ,  22), # ID#158 Message with some status from APM to GCS about camera or antenna mount
 (                             'FENCE_POINT' ,  20), # ID#160 A fence point. Used to set a point when from GCS -> MAV. Also used to return a point from MAV -> GCS
 (                            'FENCE_STATUS' ,  16), # ID#162 Status of geo-fencing. Sent in extended status stream when fencing enabled
 (                                    'AHRS' ,  36), # ID#163 Status of DCM attitude estimator
@@ -103,7 +101,6 @@ mavlink_message_lengths_dict = OrderedDict([
 (                          'MAG_CAL_REPORT' ,  52), # ID#192 Reports results of completed compass calibration. Sent until MAG_CAL_ACK received.
 (                       'EKF_STATUS_REPORT' ,  30), # ID#193 EKF Status message including flags and variances
 (                              'PID_TUNING' ,  33), # ID#194 PID tuning information
-(                           'GIMBAL_REPORT' ,  50), # ID#200 3 axis gimbal mesuraments
 (                'GIMBAL_TORQUE_CMD_REPORT' ,  16), # ID#214 100 Hz gimbal torque command telemetry
 (                         'GOPRO_HEARTBEAT' ,  11), # ID#215 Heartbeat from a HeroBus attached GoPro
 (                      'GOPRO_SET_RESPONSE' ,  10), # ID#219 Response from a GOPRO_COMMAND set request
@@ -117,7 +114,6 @@ mavlink_message_lengths_dict = OrderedDict([
 (                           'HOME_POSITION' ,  60), # ID#242 This message can be requested by sending the MAV_CMD_GET_HOME_POSITION command. The position the system will return to and land on. The position is set automatically by the system during the takeoff in case it was not explicitly set by the operator before or after. The position the system will return to and land on. The global and local positions encode the position in the respective coordinate frames, while the q parameter encodes the orientation of the surface. Under normal conditions it describes the heading and terrain slope, which can be used by the aircraft to adjust the approach. The approach 3D vector describes the point to which the system should fly in normal flight mode and then perform a landing sequence along the vector.
 (                        'MESSAGE_INTERVAL' ,  14), # ID#244 This interface replaces DATA_STREAM
 (                      'EXTENDED_SYS_STATE' ,  10), # ID#245 Provides state for additional features
-(                            'ADSB_VEHICLE' ,  46), # ID#246 The location and information of an ADSB vehicle
 (                               'COLLISION' ,  27), # ID#247 Information about a potential collision
 (                            'V2_EXTENSION' , 262), # ID#248 Message implementing parts of the V2 payload specs in V1 frames for transitional support.
 (                             'MEMORY_VECT' ,  44), # ID#249 Send raw controller memory. The use of this message is discouraged for normal packets, but a quite efficient way for testing new messages and getting experimental debug output.

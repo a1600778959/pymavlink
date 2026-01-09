@@ -85,7 +85,6 @@ mavlink_message_lengths_dict = OrderedDict([
 (                                  'DATA16' ,  26), # ID#169 Data packet, size 16
 (                                  'DATA32' ,  42), # ID#170 Data packet, size 32
 (                                  'DATA64' ,  74), # ID#171 Data packet, size 64
-(                                  'DATA96' , 106), # ID#172 Data packet, size 96
 (                             'RANGEFINDER' ,  16), # ID#173 Rangefinder reporting
 (                        'AIRSPEED_AUTOCAL' ,  56), # ID#174 Airspeed auto-calibration
 (                             'RALLY_POINT' ,  27), # ID#175 A rally point. Used to set a point when from GCS -> MAV. Also used to return a point from MAV -> GCS

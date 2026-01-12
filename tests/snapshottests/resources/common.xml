@@ -139,9 +139,6 @@
       <entry value="32" name="MAV_SYS_STATUS_SENSOR_GPS">
         <description>0x20 GPS</description>
       </entry>
-      <entry value="64" name="MAV_SYS_STATUS_SENSOR_OPTICAL_FLOW">
-        <description>0x40 optical flow</description>
-      </entry>
       <entry value="128" name="MAV_SYS_STATUS_SENSOR_VISION_POSITION">
         <description>0x80 computer vision position</description>
       </entry>
@@ -4488,8 +4485,6 @@
       <entry value="2" name="FAILURE_UNIT_SENSOR_MAG"/>
       <entry value="3" name="FAILURE_UNIT_SENSOR_BARO"/>
       <entry value="4" name="FAILURE_UNIT_SENSOR_GPS"/>
-      <entry value="5" name="FAILURE_UNIT_SENSOR_OPTICAL_FLOW"/>
-      <entry value="6" name="FAILURE_UNIT_SENSOR_VIO"/>
       <entry value="7" name="FAILURE_UNIT_SENSOR_DISTANCE_SENSOR"/>
       <entry value="8" name="FAILURE_UNIT_SENSOR_AIRSPEED"/>
       <entry value="100" name="FAILURE_UNIT_SYSTEM_BATTERY"/>

@@ -377,20 +377,11 @@
       <entry value="153" name="MAV_COMP_ID_SERVO14">
         <description/>
       </entry>
-      <entry value="154" name="MAV_COMP_ID_GIMBAL">
-        <description/>
-      </entry>
       <entry value="155" name="MAV_COMP_ID_LOG">
-        <description/>
-      </entry>
-      <entry value="156" name="MAV_COMP_ID_ADSB">
         <description/>
       </entry>
       <entry value="158" name="MAV_COMP_ID_PERIPHERAL">
         <description>Generic autopilot peripheral component ID. Meant for devices that do not implement the parameter sub-protocol</description>
-      </entry>
-      <entry value="159" name="MAV_COMP_ID_QX1_GIMBAL">
-        <description/>
       </entry>
     </enum>
     <enum name="MAV_SYS_STATUS_SENSOR">
@@ -412,15 +403,6 @@
       </entry>
       <entry value="32" name="MAV_SYS_STATUS_SENSOR_GPS">
         <description>0x20 GPS</description>
-      </entry>
-      <entry value="64" name="MAV_SYS_STATUS_SENSOR_OPTICAL_FLOW">
-        <description>0x40 optical flow</description>
-      </entry>
-      <entry value="128" name="MAV_SYS_STATUS_SENSOR_VISION_POSITION">
-        <description>0x80 computer vision position</description>
-      </entry>
-      <entry value="256" name="MAV_SYS_STATUS_SENSOR_LASER_POSITION">
-        <description>0x100 laser based position</description>
       </entry>
       <entry value="512" name="MAV_SYS_STATUS_SENSOR_EXTERNAL_GROUND_TRUTH">
         <description>0x200 external ground truth (Vicon or Leica)</description>
@@ -2957,17 +2939,6 @@
       <field name="controls" type="float[16]">Control outputs -1 .. 1. Channel assignment depends on the simulated hardware.</field>
       <field name="mode" type="uint8_t">System mode (MAV_MODE), includes arming state.</field>
       <field name="flags" type="uint64_t">Flags as bitfield, reserved for future use.</field>
-    </message>
-    <message id="100" name="OPTICAL_FLOW">
-      <description>Optical flow from a flow sensor (e.g. optical mouse sensor)</description>
-      <field type="uint64_t" name="time_usec">Timestamp (UNIX)</field>
-      <field type="uint8_t" name="sensor_id">Sensor ID</field>
-      <field type="int16_t" name="flow_x">Flow in pixels * 10 in x-sensor direction (dezi-pixels)</field>
-      <field type="int16_t" name="flow_y">Flow in pixels * 10 in y-sensor direction (dezi-pixels)</field>
-      <field type="float" name="flow_comp_m_x">Flow in meters in x-sensor direction, angular-speed compensated</field>
-      <field type="float" name="flow_comp_m_y">Flow in meters in y-sensor direction, angular-speed compensated</field>
-      <field type="uint8_t" name="quality">Optical flow quality / confidence. 0: bad, 255: maximum quality</field>
-      <field type="float" name="ground_distance">Ground distance in meters. Positive value: distance known. Negative value: Unknown distance</field>
     </message>
     <message id="105" name="HIGHRES_IMU">
       <description>The IMU readings in SI units in NED body frame</description>

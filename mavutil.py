@@ -2067,7 +2067,8 @@ mode_mapping_rover = {
     12 : 'SMART_RTL',
     15 : 'GUIDED',
     16 : 'INITIALISING',
-    16 : 'AOAFOLLOW'
+    17 : 'AOAFOLLOW',
+    18 : 'PATROL'
 }
 
 mode_mapping_tracker = {
